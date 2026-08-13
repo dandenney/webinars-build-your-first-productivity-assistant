@@ -1,0 +1,12 @@
+From: Noah Metric <noah@signalboard.example>
+To: catch22d@gmail.com
+Date: Thu, 06 Aug 2026 14:00:00 GMT
+Message-ID: <sb-005@signalboard-demo.invalid>
+Subject: [SignalBoard] Launch metrics include test workspaces
+X-SignalBoard-Fixture-ID: SB-005
+X-SignalBoard-Role: data
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+The 312 dashboards in the launch update include 181 made by employees and automated QA. Deleted test workspaces are still present too. We should not present 312 as customer adoption.

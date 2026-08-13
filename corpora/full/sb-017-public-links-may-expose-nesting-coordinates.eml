@@ -1,0 +1,12 @@
+From: Uma Security <uma@signalboard.example>
+To: catch22d@gmail.com
+Date: Fri, 07 Aug 2026 19:00:00 GMT
+Message-ID: <sb-017@signalboard-demo.invalid>
+Subject: [SignalBoard] Public links may expose nesting coordinates
+X-SignalBoard-Fixture-ID: SB-017
+X-SignalBoard-Role: security
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Public dashboard links can display row-level coordinates when a chart tooltip uses the raw location field. ClawWatch classifies nesting locations as sensitive. Disable public sharing for this dataset until reviewed.

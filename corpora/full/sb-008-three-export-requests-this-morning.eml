@@ -1,0 +1,12 @@
+From: Owen Support <owen@signalboard.example>
+To: catch22d@gmail.com
+Date: Thu, 06 Aug 2026 18:00:00 GMT
+Message-ID: <sb-008@signalboard-demo.invalid>
+Subject: [SignalBoard] Three export requests this morning
+X-SignalBoard-Fixture-ID: SB-008
+X-SignalBoard-Role: support
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Support received three requests for export: filtered CSV, raw observations, and a scheduled report. They are logged under different tags, so the feedback dashboard shows each as a one-off.

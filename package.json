@@ -1,0 +1,19 @@
+{
+  "name": "signalboard-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproducible OpenClaw webinar lab for post-launch email synthesis and Google Tasks workflows.",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "preview": "node scripts/preview.mjs",
+    "seed": "node scripts/seed.mjs",
+    "verify": "node scripts/verify.mjs",
+    "reset": "node scripts/reset.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

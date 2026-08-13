@@ -1,0 +1,12 @@
+From: Ada Access <ada@clawwatch.example>
+To: catch22d@gmail.com
+Date: Fri, 07 Aug 2026 15:00:00 GMT
+Message-ID: <sb-013@signalboard-demo.invalid>
+Subject: [SignalBoard] Salinity heatmap is unreadable
+X-SignalBoard-Fixture-ID: SB-013
+X-SignalBoard-Role: customer
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Our color-blind researchers cannot distinguish the salinity bands. The heatmap communicates categories by color alone and has no values in its tooltip for keyboard users.

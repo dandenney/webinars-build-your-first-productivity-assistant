@@ -1,0 +1,12 @@
+From: Inez Data <inez@signalboard.example>
+To: catch22d@gmail.com
+Date: Thu, 06 Aug 2026 19:00:00 GMT
+Message-ID: <sb-009@signalboard-demo.invalid>
+Subject: [SignalBoard] Buoy 17 temperature unit mismatch
+X-SignalBoard-Fixture-ID: SB-009
+X-SignalBoard-Role: data
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Buoy 17 reports Fahrenheit while the ingestion pipeline assumes Celsius. The resulting spike affects habitat-temperature charts and may explain the strange migration correlation.

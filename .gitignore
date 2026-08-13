@@ -1,0 +1,6 @@
+.env
+.signalboard-state.json
+.trash/
+outbox/
+node_modules/
+*.log

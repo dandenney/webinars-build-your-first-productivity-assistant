@@ -1,0 +1,12 @@
+From: Ellis Analytics <ellis@signalboard.example>
+To: catch22d@gmail.com
+Date: Sat, 08 Aug 2026 14:00:00 GMT
+Message-ID: <sb-020@signalboard-demo.invalid>
+Subject: [SignalBoard] We measure creation, not useful adoption
+X-SignalBoard-Fixture-ID: SB-020
+X-SignalBoard-Role: data
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Our launch goal says "increase engagement," but has no baseline or target. Dashboard creation is a weak proxy: second-dashboard publishers retain well, while most one-time creators never return. We do not measure whether a dashboard informed a decision.

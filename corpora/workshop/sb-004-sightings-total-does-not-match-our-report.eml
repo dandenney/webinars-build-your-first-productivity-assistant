@@ -1,0 +1,12 @@
+From: Anika Shell <anika@clawwatch.example>
+To: catch22d@gmail.com
+Date: Thu, 06 Aug 2026 13:00:00 GMT
+Message-ID: <sb-004@signalboard-demo.invalid>
+Subject: [SignalBoard] Sightings total does not match our report
+X-SignalBoard-Fixture-ID: SB-004
+X-SignalBoard-Role: customer
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+SignalBoard shows 12,481 lobster sightings. Our validated field report has 11,906. Test observations from training runs may be included in the dashboard total.

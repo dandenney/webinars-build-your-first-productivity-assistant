@@ -1,0 +1,12 @@
+From: Finn Claw <finn@clawwatch.example>
+To: catch22d@gmail.com
+Date: Fri, 07 Aug 2026 20:00:00 GMT
+Message-ID: <sb-018@signalboard-demo.invalid>
+Subject: [SignalBoard] Duplicate buoy readings after reconnect
+X-SignalBoard-Fixture-ID: SB-018
+X-SignalBoard-Role: customer
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+When buoy 22 reconnected, several readings appeared twice. Migration activity jumped by 18 percent, but our raw device log shows no corresponding increase.

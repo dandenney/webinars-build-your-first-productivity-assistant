@@ -1,0 +1,12 @@
+From: Priya Nair <priya@signalboard.example>
+To: catch22d@gmail.com
+Date: Wed, 05 Aug 2026 16:00:00 GMT
+Message-ID: <sb-002@signalboard-demo.invalid>
+Subject: [SignalBoard] Refresh failures still look successful
+X-SignalBoard-Fixture-ID: SB-002
+X-SignalBoard-Role: engineering
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+When a buoy credential expires, the refresh job fails but the dashboard keeps showing the previous values without a stale-data warning. We did not assign an owner for this after launch.

@@ -1,0 +1,12 @@
+[
+  { "cluster": "security", "priority": 1, "title": "Contain sensitive nesting coordinates in public dashboards", "sources": ["SB-017"] },
+  { "cluster": "data-trust", "priority": 2, "title": "Show failed refreshes and data freshness clearly", "sources": ["SB-002", "SB-011"] },
+  { "cluster": "data-quality", "priority": 2, "title": "Correct launch-week observation metrics", "sources": ["SB-004", "SB-009", "SB-015", "SB-016", "SB-018"] },
+  { "cluster": "expectations", "priority": 3, "title": "Align real-time messaging with refresh behavior", "sources": ["SB-011", "SB-012"] },
+  { "cluster": "expectations", "priority": 3, "title": "Resolve the embedding commitment with ClawWatch", "sources": ["SB-006", "SB-007"] },
+  { "cluster": "operations", "priority": 4, "title": "Name refresh and rollback owners with thresholds", "sources": ["SB-002", "SB-021"] },
+  { "cluster": "customer-workflow", "priority": 5, "title": "Define the export workstream from aggregated requests", "sources": ["SB-001", "SB-008"] },
+  { "cluster": "accessibility", "priority": 5, "title": "Make the salinity heatmap accessible", "sources": ["SB-013"] },
+  { "cluster": "enablement", "priority": 5, "title": "Update sharing documentation for the launched UI", "sources": ["SB-010"] },
+  { "cluster": "measurement", "priority": 5, "title": "Rebuild the launch scorecard with trustworthy adoption metrics", "sources": ["SB-005", "SB-020"] }
+]

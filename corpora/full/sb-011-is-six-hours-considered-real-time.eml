@@ -1,0 +1,12 @@
+From: Cass Harbor <cass@clawwatch.example>
+To: catch22d@gmail.com
+Date: Fri, 07 Aug 2026 13:00:00 GMT
+Message-ID: <sb-011@signalboard-demo.invalid>
+Subject: [SignalBoard] Is six hours considered real-time?
+X-SignalBoard-Fixture-ID: SB-011
+X-SignalBoard-Role: customer
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Our team expected "real-time coastal monitoring" from the launch page. The dashboard refreshes every six hours. That cadence can work, but we need accurate wording and a visible last-refreshed time.

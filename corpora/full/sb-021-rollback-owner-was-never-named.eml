@@ -1,0 +1,12 @@
+From: Pat Incident <pat@signalboard.example>
+To: catch22d@gmail.com
+Date: Sat, 08 Aug 2026 15:00:00 GMT
+Message-ID: <sb-021@signalboard-demo.invalid>
+Subject: [SignalBoard] Rollback owner was never named
+X-SignalBoard-Fixture-ID: SB-021
+X-SignalBoard-Role: operations
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+The launch notes mention a rollback procedure but not an owner or decision threshold. Refresh failures crossed five percent yesterday; nobody knew whether that qualified for rollback.

@@ -1,0 +1,12 @@
+From: Tori Field <tori@clawwatch.example>
+To: catch22d@gmail.com
+Date: Fri, 07 Aug 2026 17:00:00 GMT
+Message-ID: <sb-015@signalboard-demo.invalid>
+Subject: [SignalBoard] Overnight observations appear on the wrong day
+X-SignalBoard-Fixture-ID: SB-015
+X-SignalBoard-Role: customer
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Sightings entered after 7 p.m. local time appear under tomorrow's reporting date. The dashboard seems to group in UTC while our field reports use Atlantic time.

@@ -1,0 +1,12 @@
+From: Ravi Docs <ravi@signalboard.example>
+To: catch22d@gmail.com
+Date: Thu, 06 Aug 2026 20:00:00 GMT
+Message-ID: <sb-010@signalboard-demo.invalid>
+Subject: [SignalBoard] Help article still uses beta sharing UI
+X-SignalBoard-Fixture-ID: SB-010
+X-SignalBoard-Role: docs
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+The public sharing article shows the beta permissions dialog. Customers following it cannot find the controls in the launched UI. I can update it, but need screenshots and a confirmed permissions model.

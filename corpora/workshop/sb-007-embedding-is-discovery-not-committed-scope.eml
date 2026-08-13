@@ -1,0 +1,12 @@
+From: Mina Product <mina@signalboard.example>
+To: catch22d@gmail.com
+Date: Thu, 06 Aug 2026 16:00:00 GMT
+Message-ID: <sb-007@signalboard-demo.invalid>
+Subject: [SignalBoard] Embedding is discovery, not committed scope
+X-SignalBoard-Fixture-ID: SB-007
+X-SignalBoard-Role: product
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Clarification: portal embedding is still in discovery. It was not part of launch scope and has no committed delivery date. Please flag any customer promises so we can correct expectations.

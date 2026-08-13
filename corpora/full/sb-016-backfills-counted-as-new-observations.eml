@@ -1,0 +1,12 @@
+From: Quinn Pipeline <quinn@signalboard.example>
+To: catch22d@gmail.com
+Date: Fri, 07 Aug 2026 18:00:00 GMT
+Message-ID: <sb-016@signalboard-demo.invalid>
+Subject: [SignalBoard] Backfills counted as new observations
+X-SignalBoard-Fixture-ID: SB-016
+X-SignalBoard-Role: engineering
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+
+Yesterday's historical backfill triggered the "new sightings" metric. The chart counts ingestion time rather than observation time. This also inflated the launch-week activity graph.
