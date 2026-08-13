@@ -177,7 +177,7 @@ Provide these specific instructions:
 - Install Node.js 20 or newer.
 - Use a dedicated disposable Google account.
 - Never connect a personal or work inbox for the workshop.
-- Install or run `mcporter`.
+- Use OpenClaw's native MCP management commands.
 - Connect Zapier MCP to OpenClaw.
 - Connect Gmail and Google Tasks through Zapier.
 - Restrict exposed tools after setup.
@@ -186,7 +186,8 @@ Provide these specific instructions:
 Commands:
 
 ```sh
-git clone <REPOSITORY_URL>
+cd ~/.openclaw/workspace
+git clone https://github.com/dandenney/webinars-build-your-first-productivity-assistant.git signalboard-demo
 cd signalboard-demo
 npm test
 npm run generate
@@ -194,18 +195,18 @@ npm run verify -- --corpus starter
 npm run preview -- --corpus starter
 ```
 
-Leave `<REPOSITORY_URL>` as a clearly marked placeholder.
+If the repository is cloned elsewhere, tell the chat its full path before starting.
 
 ### 8. Connect Zapier MCP
 
 Show these commands:
 
 ```sh
-npx -y mcporter config add zapier \
+openclaw mcp add zapier \
   --url "https://mcp.zapier.com/api/v1/connect" \
-  --client-name "openclaw"
-
-npx -y mcporter list zapier --schema
+  --auth oauth
+openclaw mcp login zapier
+openclaw mcp doctor zapier --probe
 ```
 
 Explain:

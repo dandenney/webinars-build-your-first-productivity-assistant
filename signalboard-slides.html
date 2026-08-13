@@ -1028,10 +1028,11 @@ npm run verify -- --corpus starter
 npm run preview -- --corpus starter
 
 <span class="c"># 2. Connect Zapier MCP (auth in the DEMO browser)</span>
-npx -y mcporter config add zapier \
+openclaw mcp add zapier \
   --url "https://mcp.zapier.com/api/v1/connect" \
-  --client-name "openclaw"
-npx -y mcporter list zapier --schema
+  --auth oauth
+openclaw mcp login zapier
+openclaw mcp doctor zapier --probe
 
 <span class="c"># 3. Stage the synthetic inbox (send needs explicit approval)</span>
 npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</span></pre>
@@ -1120,7 +1121,7 @@ npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</s
     </div>
     <p class="lede">The recurring workflow needs read/list only. Broad OAuth at the account level is exactly why exposed <strong>tools</strong> must be narrowed, and why the account is disposable.</p>
   </div>
-  <aside class="notes"><p>Verify with <code>npx -y mcporter list zapier --schema</code> after restricting. The printed tool list is your audit.</p></aside>
+  <aside class="notes"><p>Inspect the connected server, narrow its exposed tools with <code>openclaw mcp tools zapier</code>, then verify with <code>openclaw mcp doctor zapier --probe</code>. The resulting tool inventory is your audit.</p></aside>
 </section>
 
 <!-- ============ A6 ============ -->
