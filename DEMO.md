@@ -155,7 +155,31 @@ Analyze the selected `.eml` corpus or seeded inbox without reading `expected/` f
 
 After presenting the assessment, the facilitator may compare it with `expected/planted-signals.md`.
 
-### 11. Teardown send access once
+### 11. Optional bonuses, only if time allows
+
+The core demo is complete after the assessment. Do not let either bonus delay teardown, Q&A, or the local fallback.
+
+#### Bonus 1: turn the assessment into approved tasks
+
+Compare the assessment with current and completed Google Tasks. Group evidence by root cause, preserve every contributing fixture/message ID, and propose only missing or materially incomplete follow-up work. Do not create one task per email.
+
+Show the proposed titles and consolidations first, then require explicit approval before creating or updating tasks. After approval, create the smallest useful set and rerun the comparison to demonstrate no duplicates.
+
+Suggested prompt:
+
+> Compare the assessment with Google Tasks. Consolidate duplicates and propose only the missing follow-up work. Show me the plan and ask before creating or updating anything.
+
+#### Bonus 2: make a printable leadership report
+
+Use `templates/state-of-the-claw-report.md` to create a one-page report from the blind assessment. Save a local PDF to `reports/state-of-the-claw-week-1.pdf`. Include the overall recommendation, outcomes, immediate risks, prioritized actions, evidence/inference/unknowns, and source fixture IDs.
+
+Creating the local file does not require external-action approval. Do not email, upload, publish, or otherwise distribute it. If a local PDF tool is unavailable, create printable Markdown or HTML and explain the fallback.
+
+Suggested prompt:
+
+> Turn the assessment into a one-page State of the Claw leadership report using the repository template. Create a local PDF at reports/state-of-the-claw-week-1.pdf, preserve source fixture IDs, and do not send or publish it.
+
+### 12. Teardown send access once
 
 After all approved batches are delivered, have the user remove Gmail Send Email manually in Zapier's configuration UI. Do not use programmatic action-key removal when Send Email and Find Email share the same internal key; it can remove both actions.
 
@@ -165,6 +189,6 @@ Then verify:
 - Find Email still resolves; and
 - Google Tasks remains ready for ongoing analysis.
 
-### 12. Reset
+### 13. Reset
 
 `npm run reset -- --confirm` only moves the generated local outbox to `.trash/`. Explain that remote cleanup is intentionally manual and must be separately approved.

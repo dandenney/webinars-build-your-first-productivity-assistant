@@ -3,5 +3,6 @@ config/mcporter.json
 .signalboard-state.json
 .trash/
 outbox/
+reports/
 node_modules/
 *.log

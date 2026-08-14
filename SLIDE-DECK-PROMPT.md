@@ -411,7 +411,10 @@ During the demo:
 5. Reveal the larger corpus.
 6. Request the launch assessment.
 7. Ask what the launch dashboard missed.
-8. Draft a “State of the Claw” recap without sending it.
+8. If time allows, run Bonus 1: compare the assessment with Tasks, propose consolidated missing work, ask for approval, then create only the approved changes.
+9. If time allows, run Bonus 2: generate a one-page local State of the Claw PDF from the report template without sending or publishing it.
+
+Label both steps visibly as optional bonuses. The core demo is complete after the assessment; skip the bonuses before sacrificing teardown, fallback, or Q&A time.
 
 ### 19. Attendee fallback path
 

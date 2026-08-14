@@ -49,3 +49,11 @@ When asked for a recap, include:
 8. Evidence, inference, and unknowns.
 
 Never manufacture numerical confidence from the synthetic email sample. The corpus is qualitative evidence, not a statistically representative survey.
+
+## Optional bonus 1: approved task plan
+
+Only run if time allows. Compare the assessment with current and completed Tasks, consolidate by root cause, and preserve all contributing source IDs. Present the proposed changes before creating or updating anything. After explicit approval, make the smallest useful set of changes and rerun the comparison to prove idempotency.
+
+## Optional bonus 2: printable report
+
+Only run if time allows. Use `templates/state-of-the-claw-report.md` to create a one-page local PDF at `reports/state-of-the-claw-week-1.pdf`. Do not send, upload, or publish it. If PDF creation is unavailable, produce printable Markdown or HTML and state the fallback.

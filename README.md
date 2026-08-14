@@ -77,13 +77,13 @@ Push beyond summarization:
 
 > What are customers telling us that our launch dashboard isn't?
 
-Turn insight into controlled action:
+Bonus 1, only if time allows:
 
-> Compare the assessment with Google Tasks. Consolidate duplicates and propose only the missing follow-up work. Ask before creating it.
+> Compare the assessment with Google Tasks. Consolidate duplicates and propose only the missing follow-up work. Show me the plan and ask before creating or updating anything.
 
-Finish with judgment:
+Bonus 2, only if time allows:
 
-> Draft the State of the Claw executive recap. Do not send it.
+> Turn the assessment into a one-page State of the Claw leadership report using the repository template. Create a local PDF at reports/state-of-the-claw-week-1.pdf, preserve source fixture IDs, and do not send or publish it.
 
 ## Safety and reproducibility
 

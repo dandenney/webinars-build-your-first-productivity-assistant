@@ -354,7 +354,8 @@ footer svg { width: 16px; height: 16px; color: var(--coral); transform: translat
   <a href="#tasks">03 Tasks</a>
   <a href="#expand">04 Expand</a>
   <a href="#assess">05 Assess</a>
-  <a href="#action">06 Act</a>
+  <a href="#action">Bonus 1</a>
+  <a href="#hard-copy">Bonus 2</a>
   <a href="#guardrails">Guardrails</a>
   <a href="#broken">Fallback</a>
   <a href="#reset">Reset</a>
@@ -522,20 +523,33 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
   </div>
 </section>
 
-<!-- 06 ACT -->
+<!-- BONUS 1 -->
 <section class="step" id="action">
-  <div class="step-head"><span class="step-num">06</span><h2>Insight into controlled action<span class="live-tag">Live</span></h2></div>
+  <div class="step-head"><span class="step-num">B1</span><h2>Bonus 1: approved action plan<span class="live-tag">If time</span></h2></div>
   <div class="step-body">
+    <p class="intro">The core demo is already complete. Continue only if the room and clock allow it.</p>
     <div class="promptplate">
-      <div class="plate-head"><span><b>Prompt 03</b> · consolidate</span><button class="copy-btn" type="button">Copy</button></div>
-      <p class="ptext">Compare the assessment with Google Tasks. Consolidate duplicates and propose only the missing follow-up work. Ask before creating it.</p>
-    </div>
-    <div class="promptplate">
-      <div class="plate-head"><span><b>Closer</b> · the recap</span><button class="copy-btn" type="button">Copy</button></div>
-      <p class="ptext">Draft the State of the Claw executive recap. Do not send it.</p>
+      <div class="plate-head"><span><b>Bonus prompt</b> · consolidate</span><button class="copy-btn" type="button">Copy</button></div>
+      <p class="ptext">Compare the assessment with Google Tasks. Consolidate duplicates and propose only the missing follow-up work. Show me the plan and ask before creating or updating anything.</p>
     </div>
     <div class="ledger">
-      <div class="row"><span class="k co">The point</span><span class="v">The draft exists; the send button belongs to a human. That single gesture is the whole approval-boundary story.</span></div>
+      <div class="row"><span class="k te">Expect</span><span class="v">A short root-cause plan, not one task per email. Source IDs survive consolidation. Creation waits for explicit approval, then a rerun proves no duplicates.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS 2 -->
+<section class="step" id="hard-copy">
+  <div class="step-head"><span class="step-num">B2</span><h2>Bonus 2: printable report<span class="live-tag">If time</span></h2></div>
+  <div class="step-body">
+    <p class="intro">Turn the analysis into something leadership can hold, review, and trace back to evidence.</p>
+    <div class="promptplate">
+      <div class="plate-head"><span><b>Bonus prompt</b> · hard copy</span><button class="copy-btn" type="button">Copy</button></div>
+      <p class="ptext">Turn the assessment into a one-page State of the Claw leadership report using the repository template. Create a local PDF at reports/state-of-the-claw-week-1.pdf, preserve source fixture IDs, and do not send or publish it.</p>
+    </div>
+    <div class="ledger">
+      <div class="row"><span class="k co">The point</span><span class="v">The demo ends with two durable outputs: approved work in Tasks and a local, printable decision brief. Distribution still belongs to a human.</span></div>
+      <div class="row"><span class="k">Fallback</span><span class="v">If PDF tooling is unavailable, create printable Markdown or HTML and keep moving.</span></div>
     </div>
   </div>
 </section>
