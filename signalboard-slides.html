@@ -595,6 +595,7 @@ aside.notes { display: none; }
 ├── scripts/
 │   ├── generate.mjs
 │   ├── preview.mjs
+│   ├── batch.mjs
 │   ├── seed.mjs
 │   ├── verify.mjs
 │   └── reset.mjs
@@ -672,18 +673,18 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     <div class="duo">
       <div class="promptplate">
         <div class="plate-head"><span><b>Prompt 02</b> · type this here</span><span>openclaw</span></div>
-        <p class="ptext">Set up Zapier MCP for OpenClaw using mcporter. Verify the connection and list its tools, then run the zapier:onboarding skill. Help me connect the dedicated demo Gmail and Google Tasks accounts, and report when both are authenticated and ready. Do not seed or send anything yet.</p>
+        <p class="ptext">Set up Zapier MCP with my dedicated demo account. Enable Gmail Find Email and Send Email plus Google Tasks find/list, create, and update. Verify both Gmail schemas, the default accounts, and a writable Tasks list. Do not seed or send anything yet.</p>
       </div>
       <ul class="marklist hold">
         <li>Connector setup happens before corpus seeding</li>
         <li>You complete OAuth in the browser</li>
         <li>Use <strong>only</strong> the dedicated demo account</li>
-        <li>Restrict tools after authentication</li>
+        <li>Verify schemas and a writable task list, not only connection status</li>
       </ul>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Be precise:</strong> the agent can guide and inspect. A human must review permissions, choose the account, and approve OAuth. Complete validation and demo-account OAuth in the same browser profile to reduce account confusion.</p>
+    <p><strong>Be precise:</strong> the agent can guide and inspect. A human must review permissions, choose the account, and approve OAuth. A non-stale connection is not enough; resolve both Gmail schemas and the Tasks list before seeding.</p>
     <p><strong>Fallback:</strong> if auth fails live, show the pre-captured screenshot of the tool list and continue local-only.</p>
   </aside>
 </section>
@@ -755,13 +756,13 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       <div style="display:grid; gap:18px;">
         <div class="promptplate">
           <div class="plate-head"><span><b>Prompt</b> · type this here</span><span>openclaw</span></div>
-          <p class="ptext">Prepare the starter corpus for my demo inbox. Preview the recipient and message count, then ask before sending.</p>
+          <p class="ptext">Seed the full corpus once. Preview one staged plan for 3, then 9, then 12 synthetic messages to my dedicated demo inbox, and ask once before delivery.</p>
         </div>
         <ol class="steps">
-          <li>The script stages an idempotent, <strong>reviewed outbox</strong>. Nothing is sent silently.</li>
-          <li>OpenClaw previews the recipient, corpus, and message count</li>
-          <li>External delivery requires <strong>explicit approval</strong></li>
-          <li>Stable fixture IDs make repeated runs duplicate-free</li>
+          <li>The script stages one idempotent, <strong>reviewed full outbox</strong></li>
+          <li>Range manifests select 3, then 9, then 12 new messages</li>
+          <li>One exact 24-message contract requires <strong>explicit approval</strong></li>
+          <li>Stable fixture IDs keep every checkpoint duplicate-free</li>
         </ol>
       </div>
       <div style="display:grid; gap:10px;">
@@ -772,8 +773,8 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Say:</strong> Seeding is a two-step handshake: the script stages, the agent previews and asks, and only then does anything leave the machine. That's the approval boundary made concrete.</p>
-    <p><strong>Expected:</strong> outbox/starter with 3 .eml files plus a manifest.json. The agent states recipient and count before sending. Approve once; repeated runs are no-ops.</p>
+    <p><strong>Say:</strong> Seeding stays local. The agent previews one exact recipient and three fixture ranges, then one approval covers the unchanged plan for the full codealong.</p>
+    <p><strong>Expected:</strong> outbox/full plus three filtered manifests containing 3, 9, and 12 unique fixtures. Only the starter range is delivered at this checkpoint.</p>
   </aside>
 </section>
 
@@ -830,16 +831,16 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
   <div class="inner">
     <p class="ey"><b>§ 12</b> Scaling up</p>
     <h2>Expand the evidence</h2>
-    <div class="ghosts" aria-label="3 starter, 12 workshop, 24 full emails">
+    <div class="ghosts" aria-label="3 starter messages, 9 new workshop messages, 12 new full messages">
       <div class="g g1"><span class="n">3</span><span class="cap">Starter · smoke test</span></div>
       <span class="arrow">→</span>
-      <div class="g g2"><span class="n">12</span><span class="cap">Workshop · guided analysis</span></div>
+      <div class="g g2"><span class="n">+9</span><span class="cap">Workshop · 12 cumulative</span></div>
       <span class="arrow">→</span>
-      <div class="g g3"><span class="n">24</span><span class="cap">Full · launch assessment</span></div>
+      <div class="g g3"><span class="n">+12</span><span class="cap">Full · 24 cumulative</span></div>
     </div>
     <div class="promptplate">
       <div class="plate-head"><span><b>Prompt</b> · expand safely</span><span>openclaw</span></div>
-      <p class="ptext">Expand the demo inbox to the full SignalBoard corpus. Preview only the messages not already delivered and ask before sending them.</p>
+      <p class="ptext">Continue the approved plan: deliver only SB-004–012, then SB-013–024. Check fixture IDs and never resend an earlier range.</p>
     </div>
     <div>
       <p class="statement-sub" style="margin-bottom:10px">The full corpus is deliberately messy, like a real launch week</p>
@@ -849,7 +850,7 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Say:</strong> Corpora are cumulative: workshop contains starter, full contains workshop. The full set plants contradictions on purpose. Marketing says "real-time," an internal thread asks if six hours counts. Launch metrics include test workspaces. Nobody owns the rollback plan.</p>
+    <p><strong>Say:</strong> The corpus is cumulative, but delivery is incremental: 3, then 9 new, then 12 new. The full set plants contradictions on purpose. Marketing says "real-time," an internal thread asks if six hours counts. Launch metrics include test workspaces. Nobody owns the rollback plan.</p>
     <p>Tease the injection email. It gets its own slide.</p>
   </aside>
 </section>
@@ -1034,8 +1035,11 @@ npx -y mcporter config add zapier --url "https://mcp.zapier.com/api/v1/connect" 
 npx -y mcporter list zapier --schema
 <span class="c"># Then ask OpenClaw to run the zapier:onboarding skill.</span>
 
-<span class="c"># 3. Stage the synthetic inbox (send needs explicit approval)</span>
-npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</span></pre>
+<span class="c"># 3. Seed once; prepare three reviewed delivery ranges</span>
+npm run seed -- --corpus full
+npm run batch -- --from SB-001 --to SB-003
+npm run batch -- --from SB-004 --to SB-012
+npm run batch -- --from SB-013 --to SB-024</pre>
     </div>
   </div>
   <aside class="notes"><p>Everything on one slide for attendees who screenshot. The walkthrough page has the same commands with copy buttons.</p></aside>
@@ -1075,7 +1079,7 @@ npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</s
     </div>
     <p class="statement" style="font-size:clamp(16px,2.2vw,24px)">The reset script honors the same rule as the agent: <span class="co">destructive remote actions require a human.</span></p>
   </div>
-  <aside class="notes"><p>Full reset between rehearsals: run reset, manually archive the seeded demo emails, manually clear the demo Tasks list, then reseed.</p></aside>
+  <aside class="notes"><p>After the final batch, remove Gmail Send manually and verify Find still works. For a full reset: run reset, manually archive the seeded demo emails, manually clear the demo Tasks list, then reseed full.</p></aside>
 </section>
 
 <!-- ============ A4 ============ -->
@@ -1086,14 +1090,14 @@ npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</s
     <table class="chart">
       <thead><tr><th>Corpus</th><th>Messages</th><th>Purpose</th><th>Contents</th></tr></thead>
       <tbody>
-        <tr><td>starter</td><td>3</td><td>Connector smoke test</td><td>One clear request, one silent failure, one piece of praise (SB-001…003)</td></tr>
-        <tr><td>workshop</td><td>12 · cumulative</td><td>Guided code-along</td><td>Adds metric mismatches, scope disputes, duplicate export requests, the "real-time" contradiction</td></tr>
-        <tr><td>full</td><td>24 · cumulative</td><td>Launch synthesis reveal</td><td>Adds missing rollback owner, backfill-inflated metrics, privacy concern, positive adoption, prompt injection (SB-023)</td></tr>
+        <tr><td>starter</td><td>3 new</td><td>Connector smoke test</td><td>One clear request, one silent failure, one piece of praise (SB-001…003)</td></tr>
+        <tr><td>workshop</td><td>9 new · 12 total</td><td>Guided code-along</td><td>Adds metric mismatches, scope disputes, duplicate export requests, the "real-time" contradiction</td></tr>
+        <tr><td>full</td><td>12 new · 24 total</td><td>Launch synthesis reveal</td><td>Adds missing rollback owner, backfill-inflated metrics, privacy concern, positive adoption, prompt injection (SB-023)</td></tr>
       </tbody>
     </table>
-    <p class="lede">Corpora are cumulative: each larger set contains the smaller ones, so fixture IDs stay stable across the whole webinar.</p>
+    <p class="lede">Seed the cumulative full corpus once, then deliver three non-overlapping fixture ranges so every checkpoint stays stable and duplicate-free.</p>
   </div>
-  <aside class="notes"><p>Cumulative design means you can seed starter early, then seed workshop or full later. The dedup logic skips already-delivered fixture IDs.</p></aside>
+  <aside class="notes"><p>The local source remains cumulative; the delivery manifests are incremental. One approval covers the exact 3 + 9 + 12 plan unless its recipient or scope changes.</p></aside>
 </section>
 
 <!-- ============ A5 ============ -->
@@ -1103,14 +1107,15 @@ npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</s
     <h2>Tool-permission checklist</h2>
     <div class="duo">
       <div>
-        <div class="rulehead te"><h3>Keep enabled</h3><span class="count">02</span></div>
+        <div class="rulehead te"><h3>During codealong</h3><span class="count">03</span></div>
         <ul class="marklist yes">
-          <li>Gmail: list / read matching SignalBoard messages</li>
+          <li>Gmail: Find matching SignalBoard messages</li>
+          <li>Gmail: Send only the approved fixture plan</li>
           <li>Google Tasks: list, create, update</li>
         </ul>
       </div>
       <div>
-        <div class="rulehead da"><h3>Disable after seeding</h3><span class="count">04</span></div>
+        <div class="rulehead da"><h3>Remove at teardown</h3><span class="count">04</span></div>
         <ul class="marklist no">
           <li>Gmail send &amp; draft</li>
           <li>Gmail delete, archive, labels, contacts</li>
@@ -1119,7 +1124,7 @@ npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</s
         </ul>
       </div>
     </div>
-    <p class="lede">The recurring workflow needs read/list only. Broad OAuth at the account level is exactly why exposed <strong>tools</strong> must be narrowed, and why the account is disposable.</p>
+    <p class="lede">Keep Send for the explicitly approved lab, then remove it manually after the final batch and verify Find still works. Broad OAuth is why the account is disposable.</p>
   </div>
   <aside class="notes"><p>Inspect the connected server, narrow its exposed tools with <code>openclaw mcp tools zapier</code>, then verify with <code>openclaw mcp doctor zapier --probe</code>. The resulting tool inventory is your audit.</p></aside>
 </section>

@@ -1,4 +1,5 @@
 .env
+config/mcporter.json
 .signalboard-state.json
 .trash/
 outbox/

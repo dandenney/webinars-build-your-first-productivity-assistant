@@ -405,9 +405,9 @@ footer svg { width: 16px; height: 16px; color: var(--coral); transform: translat
     <div class="checklist" data-list="preflight">
       <label><input type="checkbox"><span>Signed into the <strong>disposable demo</strong> Google account, and nothing else</span></label>
       <label><input type="checkbox"><span>Node.js 20+ · repo cloned · <code>npm test</code> passes</span></label>
-      <label><input type="checkbox"><span>Starter fixtures present; fixture IDs known (SB-001…003)</span></label>
-      <label><input type="checkbox"><span>Gmail and Google Tasks connectors verified via Zapier MCP</span></label>
-      <label><input type="checkbox"><span>Gmail <strong>send</strong> capability disabled after seeding</span></label>
+      <label><input type="checkbox"><span>Full outbox seeded; 3, 9, and 12-message batch manifests reviewed</span></label>
+      <label><input type="checkbox"><span>Gmail Find and Send schemas resolve; Google Tasks exposes a writable list</span></label>
+      <label><input type="checkbox"><span>One staged 24-message delivery contract approved for the demo account</span></label>
       <label><input type="checkbox"><span>Visible Tasks list is the demo list</span></label>
       <label><input type="checkbox"><span>Local-only fallback tested (see <a href="#broken">Fallback</a>)</span></label>
       <label><input type="checkbox"><span>Screenshots ready: tool list, seeded inbox, created tasks, assessment</span></label>
@@ -459,13 +459,14 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
     <p class="intro">Choose Zapier after the local preview. OpenClaw installs the bridge, verifies the tools, and starts guided onboarding before any corpus is seeded.</p>
     <div class="promptplate">
       <div class="plate-head"><span><b>Prompt 02</b> · connect Zapier</span><button class="copy-btn" type="button">Copy</button></div>
-      <p class="ptext">Set up Zapier MCP for OpenClaw using mcporter. Verify the connection and list its tools, then run the zapier:onboarding skill. Help me connect the dedicated demo Gmail and Google Tasks accounts, and report when both are authenticated and ready. Do not seed or send anything yet.</p>
+      <p class="ptext">Set up Zapier MCP for OpenClaw using mcporter. Run the zapier:onboarding skill and connect my dedicated demo account. Enable Gmail Find Email and Send Email plus Google Tasks find/list, create, and update. Verify the Gmail schemas, default accounts, and a writable Tasks list. Do not seed or send anything yet.</p>
     </div>
     <ul class="marklist">
       <li>OpenClaw can inspect whether the connector exists and explain what is missing</li>
       <li>Zapier setup happens after local preparation and preview, but <strong>before seeding</strong></li>
       <li>You must complete OAuth in the browser, signed into the <strong>dedicated demo account</strong></li>
-      <li>You review requested permissions and restrict Gmail to <strong>list/read</strong>, Tasks to <strong>list/create/update</strong></li>
+      <li>You review requested permissions and restrict Gmail to <strong>Find + Send</strong>, Tasks to <strong>find/list/create/update</strong></li>
+      <li>Runtime readiness means schemas and the Tasks list resolve, not merely that a connection exists</li>
     </ul>
     <div class="safety-band"><span class="k">Do this before the webinar</span>OAuth is account-sensitive and visually noisy. Complete OpenAI validation, then sign into the dedicated demo account in the same browser before authorizing Zapier. Pre-connect it, capture a screenshot, and use the local path if it fails on stage. Never approve it for a personal or work inbox.</div>
   </div>
@@ -477,7 +478,7 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
   <div class="step-body">
     <div class="promptplate">
       <div class="plate-head"><span><b>Prompt 03</b> · integrated demo</span><button class="copy-btn" type="button">Copy</button></div>
-      <p class="ptext">Prepare the starter corpus for my demo inbox. Preview the recipient and message count, then ask before sending. After delivery, turn actionable SignalBoard messages into Google Tasks without creating duplicates.</p>
+      <p class="ptext">Seed the full SignalBoard corpus once and prepare delivery batches for SB-001–003, SB-004–012, and SB-013–024. Preview one 24-message contract for my dedicated demo inbox and ask once for approval. Then deliver only the starter batch and turn actionable messages into Google Tasks without creating duplicates.</p>
     </div>
     <div class="ledger">
       <div class="row"><span class="k te">Expect</span><span class="v">Two tasks, not three. SB-001 → task with a Friday due date. SB-002 → urgent task about data trust and missing ownership. SB-003 → retained as evidence, no task. Notes carry requester, interpretation, source Gmail link, fixture ID, and message ID.</span></div>
@@ -491,13 +492,13 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
 <section class="step" id="expand">
   <div class="step-head"><span class="step-num">04</span><h2>Expand the evidence<span class="live-tag">Live</span></h2></div>
   <div class="step-body">
-    <p class="intro">Corpora are cumulative: <strong>3</strong> starter (smoke test) → <strong>12</strong> workshop (guided analysis) → <strong>24</strong> full (launch assessment). The full set adds sales promises, marketing claims, conflicting metric definitions, duplicate themes, missing owners, positive outcomes, and one prompt-injection attempt (SB-023).</p>
+    <p class="intro">Seed once, reveal progressively: <strong>3</strong> starter messages → <strong>9 new</strong> workshop messages (12 cumulative) → <strong>12 new</strong> full messages (24 cumulative). The full set adds sales promises, marketing claims, conflicting metric definitions, duplicate themes, missing owners, positive outcomes, and one prompt-injection attempt (SB-023).</p>
     <div class="promptplate">
       <div class="plate-head"><span><b>Prompt 04</b> · scale up</span><button class="copy-btn" type="button">Copy</button></div>
-      <p class="ptext">Expand the demo inbox to the full SignalBoard corpus. Preview only the messages not already delivered and ask before sending them.</p>
+      <p class="ptext">Continue the approved delivery plan: deliver only SB-004–012 for the workshop checkpoint, then only SB-013–024 for the full assessment. Check fixture IDs before each send and do not resend earlier messages.</p>
     </div>
     <div class="ledger">
-      <div class="row"><span class="k te">Expect</span><span class="v">Dedup by fixture ID stages only the messages not already delivered. Approval is required again; it's still an external send.</span></div>
+      <div class="row"><span class="k te">Expect</span><span class="v">The reviewed range manifests stage 9 and then 12 new messages. Fixture-ID checks prevent duplicates; no new approval is needed because the recipient and delivery contract have not changed.</span></div>
     </div>
   </div>
 </section>
@@ -580,7 +581,8 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
     <ul class="marklist">
       <li>Moves the generated local outbox to <code>.trash/</code>; nothing is destroyed</li>
       <li><strong>Never deletes remote email or tasks</strong>; remote cleanup is intentionally manual</li>
-      <li>Full rehearsal reset: run reset → archive seeded demo emails by hand → clear the demo Tasks list → reseed</li>
+      <li>After the final batch, remove Gmail Send manually and verify Find Email still works</li>
+      <li>Full rehearsal reset: run reset → archive seeded demo emails by hand → clear the demo Tasks list → reseed full</li>
       <li>Keep <code>expected/planted-signals.md</code> away from the agent until after the assessment</li>
     </ul>
   </div>

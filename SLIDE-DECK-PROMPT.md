@@ -180,7 +180,7 @@ Provide these specific instructions:
 - Use `mcporter` to connect Zapier MCP to OpenClaw.
 - Connect Zapier MCP to OpenClaw.
 - Connect Gmail and Google Tasks through Zapier.
-- Restrict exposed tools after setup.
+- Configure the complete lab toolset once, then remove Gmail Send after the final batch.
 - Keep secrets and OAuth tokens outside the repository.
 
 Commands:
@@ -215,24 +215,28 @@ Explain:
 - Gmail may request broad OAuth permissions.
 - Do not approve those permissions for a real inbox.
 - Zapier MCP supplies connectors; no traditional Zap is required.
+- Connector readiness must include resolving the Gmail action schemas, the Google Tasks default connection, and a writable task-list enum. A non-stale connection alone is not sufficient.
 
 ### 9. Prepare the synthetic inbox
 
-Show the starter flow:
+Show the one-seed, staged-batch flow:
 
 ```sh
-npm run seed -- --corpus starter \
-  --recipient YOUR_DEMO_EMAIL
+npm run seed -- --corpus full
+npm run batch -- --from SB-001 --to SB-003
+npm run batch -- --from SB-004 --to SB-012
+npm run batch -- --from SB-013 --to SB-024
 ```
 
 Explain precisely:
 
 - The script prepares an idempotent reviewed outbox.
 - It does not silently send anything.
-- OpenClaw previews the recipient, corpus, and message count.
-- External delivery requires explicit approval.
+- OpenClaw previews the recipient and the complete staged plan: 3, then 9, then 12 messages.
+- One explicit approval covers the exact 24-message plan unless its recipient, ranges, counts, or scope changes.
 - Every message contains a stable fixture ID.
-- Repeated runs check fixture IDs to avoid duplicates.
+- Each batch contains only new fixture IDs, and repeated runs check those IDs to avoid duplicates.
+- Gmail Send remains enabled during the approved codealong and is removed once at teardown.
 
 Visually show the three starter emails:
 
@@ -285,9 +289,9 @@ Visual: Two browser windows labeled **DEMO — Firefox** and **EVERYDAY — Chro
 Show the progression:
 
 ```text
-3 starter emails → connector smoke test
-12 workshop emails → guided analysis
-24 full emails → launch assessment
+SB-001–003: 3 starter emails → connector smoke test
+SB-004–012: 9 new emails → 12-message guided analysis
+SB-013–024: 12 new emails → 24-message launch assessment
 ```
 
 The full corpus contains:
@@ -386,9 +390,10 @@ Before going live:
 
 - Firefox is signed into the disposable demo account.
 - Chrome remains on the everyday account.
-- Starter fixtures are present.
+- The full outbox is seeded and all three range manifests are reviewed.
 - Gmail and Google Tasks connectors work.
-- Gmail send capability is disabled after seeding.
+- Gmail Find and Send schemas resolve, Google Tasks has a default connection, and its writable task list resolves.
+- The complete 24-message staged delivery contract is approved.
 - The visible Tasks list is the demo list.
 - Existing fixture IDs are known.
 - A local-only fallback is ready.
@@ -396,8 +401,11 @@ Before going live:
 
 During the demo:
 
-1. Show the three emails.
-2. Ask OpenClaw to create tasks.
+1. Deliver and show only the three starter emails.
+2. Ask OpenClaw to create tasks and rerun to demonstrate deduplication.
+3. Deliver only SB-004 through SB-012 for the workshop expansion.
+4. Deliver only SB-013 through SB-024 for the full assessment.
+5. Remove Gmail Send manually after the final batch and verify Find Email remains available.
 3. Inspect the two tasks.
 4. Explain why praise did not become busywork.
 5. Reveal the larger corpus.

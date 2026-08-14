@@ -40,7 +40,7 @@ Then ask OpenClaw:
 
 > In the signalboard-demo repo, read `DEMO.md` and prepare the SignalBoard starter demo. Run the checks, then ask whether I want local-only or Zapier before seeding. Tell me what you changed, report connector readiness, and flag anything that needs my involvement.
 
-Move from `starter` (3 messages), to `workshop` (12), to `full` (24).
+Move from the starter batch (3 messages), through the workshop expansion (9 new; 12 cumulative), to the full expansion (12 new; 24 cumulative).
 
 ## Full integration
 
@@ -50,12 +50,16 @@ Use only a dedicated demo Google account. Zapier's Gmail connector may request b
 
 1. Prepare and preview the starter corpus locally.
 2. Connect Zapier MCP to OpenClaw before seeding.
-3. Connect the dedicated demo Gmail and Google Tasks accounts.
-4. Restrict enabled Gmail actions to the minimum required read/list action.
-5. Restrict Google Tasks to list, create, and update.
-6. Run `npm run seed -- --corpus starter` to prepare a reviewed outbox.
-7. Ask OpenClaw to deliver that outbox to the demo inbox. This is an external action and requires confirmation.
-8. Apply the workflow in `templates/signalboard-workflow.md`.
+3. Connect the dedicated demo Gmail and Google Tasks accounts once.
+4. Enable Gmail Find Email and Send Email for the approved lab; do not enable unrelated Gmail writes.
+5. Enable Google Tasks find/list, create, and update actions.
+6. Verify runtime readiness by resolving Gmail schemas, the default Tasks connection, and a writable task list.
+7. Seed the full corpus once with `npm run seed -- --corpus full`.
+8. Prepare the three incremental range manifests with `npm run batch`.
+9. Preview and approve one exact 24-message delivery contract covering batches of 3, 9, and 12.
+10. Deliver and analyze each range progressively without resending earlier fixtures.
+11. Remove Gmail Send Email manually after the final batch and verify Find Email remains available.
+12. Apply the workflow in `templates/signalboard-workflow.md`.
 
 The repository deliberately does not store OAuth tokens or send mail by itself. Provider-specific credentials do not belong in workshop fixtures.
 
@@ -96,8 +100,11 @@ Finish with judgment:
 npm test
 npm run generate -- --recipient demo@example.com --launch-date 2026-08-04
 npm run verify -- --corpus full
-npm run preview -- --corpus workshop
-npm run seed -- --corpus starter
+npm run preview -- --corpus full --from SB-004 --to SB-012
+npm run seed -- --corpus full
+npm run batch -- --from SB-001 --to SB-003
+npm run batch -- --from SB-004 --to SB-012
+npm run batch -- --from SB-013 --to SB-024
 npm run reset -- --confirm
 ```
 

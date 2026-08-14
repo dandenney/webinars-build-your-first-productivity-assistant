@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { scenarios, scenariosForCorpus } from "../lib/scenarios.mjs";
 import { parseHeaders, renderEml } from "../lib/email.mjs";
+import { fixtureNumber, selectFixtureRange } from "../lib/fixtures.mjs";
 
 test("corpora have the intended cumulative sizes", () => {
   assert.equal(scenariosForCorpus("starter").length, 3);
@@ -20,4 +21,20 @@ test("rendered EML is parseable and identifies its fixture", () => {
   assert.equal(headers["x-signalboard-fixture-id"], "SB-001");
   assert.equal(headers.to, "demo@example.com");
   assert.match(body, /field report/);
+});
+
+test("fixture ranges select only the requested incremental batch", () => {
+  const items = scenarios.map(({ id }) => ({ fixture_id: id }));
+  assert.deepEqual(
+    selectFixtureRange(items, "SB-004", "SB-012").map(({ fixture_id }) => fixture_id),
+    scenarios.slice(3, 12).map(({ id }) => id),
+  );
+  assert.equal(fixtureNumber("SB-024"), 24);
+});
+
+test("fixture ranges reject incomplete, reversed, and malformed input", () => {
+  const items = [{ fixture_id: "SB-001" }];
+  assert.throws(() => selectFixtureRange(items, "SB-001"), /both --from and --to/);
+  assert.throws(() => selectFixtureRange(items, "SB-002", "SB-001"), /comes after/);
+  assert.throws(() => fixtureNumber("fixture-1"), /Expected SB-NNN/);
 });
