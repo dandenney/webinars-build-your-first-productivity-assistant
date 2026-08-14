@@ -177,7 +177,7 @@ Provide these specific instructions:
 - Install Node.js 20 or newer.
 - Use a dedicated disposable Google account.
 - Never connect a personal or work inbox for the workshop.
-- Use OpenClaw's native MCP management commands.
+- Use `mcporter` to connect Zapier MCP to OpenClaw.
 - Connect Zapier MCP to OpenClaw.
 - Connect Gmail and Google Tasks through Zapier.
 - Restrict exposed tools after setup.
@@ -199,19 +199,19 @@ If the repository is cloned elsewhere, tell the chat its full path before starti
 
 ### 8. Connect Zapier MCP
 
-Show these commands:
+Show these commands between local preparation/preview and corpus seeding:
 
 ```sh
-openclaw mcp add zapier \
-  --url "https://mcp.zapier.com/api/v1/connect" \
-  --auth oauth
-openclaw mcp login zapier
-openclaw mcp doctor zapier --probe
+npx -y mcporter --version
+npx -y mcporter config add zapier --url "https://mcp.zapier.com/api/v1/connect" --client-name "openclaw"
+npx -y mcporter list zapier --schema
 ```
 
 Explain:
 
+- Load and follow the `zapier:onboarding` skill after the connection verifies.
 - Authenticate only with the dedicated demo account.
+- Complete OpenAI validation and demo-account OAuth in the same browser profile to reduce account confusion.
 - Gmail may request broad OAuth permissions.
 - Do not approve those permissions for a real inbox.
 - Zapier MCP supplies connectors; no traditional Zap is required.

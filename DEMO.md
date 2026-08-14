@@ -4,7 +4,7 @@ When a user asks you to set up this folder, treat this file as the operating pro
 
 ## Outcome
 
-Prepare a safe, reproducible SignalBoard post-launch lab. Prefer a working local demonstration over blocking on optional integrations.
+Prepare a safe, reproducible SignalBoard post-launch lab. Support both a local-only path and a Zapier-integrated path. Do not silently choose between them when the user has not stated a preference.
 
 ## Non-negotiable safety rules
 
@@ -26,12 +26,14 @@ Prepare a safe, reproducible SignalBoard post-launch lab. Prefer a working local
 - Detect whether Zapier MCP is configured and authenticated.
 - Inspect enabled Zapier actions and accounts without modifying them.
 
-### 2. Choose the smallest viable mode
+### 2. Choose the mode before seeding
 
 - **Local-only:** works immediately. Analyze `.eml` files directly.
 - **Integrated:** requires a dedicated demo Gmail account and Google Tasks connection through Zapier MCP.
 
-If integration is incomplete, complete the local demo first and explain the remaining connector step.
+If the user did not explicitly request a mode, ask whether they want local-only or Zapier before running `npm run seed`.
+
+If the user chooses Zapier, connector setup and OAuth verification happen before seeding. If integration is incomplete, explain the exact manual step and offer local-only as a fallback; do not silently switch modes.
 
 ### 3. Select corpus
 
@@ -41,18 +43,43 @@ If integration is incomplete, complete the local demo first and explain the rema
 
 Default to `starter` unless the user explicitly asks for another size.
 
-### 4. Local preparation
+### 4. Prepare and preview locally
 
 Run:
 
 ```sh
 npm run preview -- --corpus starter
+```
+
+No external message has been sent.
+
+### 5. Connect Zapier for integrated mode
+
+Skip this step only when the user chose local-only.
+
+Before seeding, ensure `mcporter` is available, add the Zapier MCP endpoint, and verify its tool schemas:
+
+```sh
+npx -y mcporter --version
+npx -y mcporter config add zapier --url "https://mcp.zapier.com/api/v1/connect" --client-name "openclaw"
+npx -y mcporter list zapier --schema
+```
+
+Then load and follow the `zapier:onboarding` skill. The user must complete OAuth in a browser while signed into the dedicated demo account. Prefer completing OpenAI validation and demo-account OAuth in the same browser profile to avoid cross-browser account confusion.
+
+Verify that Gmail and Google Tasks are authenticated and inspect their enabled actions and default accounts. Report connector readiness in the setup response, including any manual action still required.
+
+### 6. Seed the reviewed outbox
+
+After the mode is chosen—and after Zapier is verified when integrated mode is selected—run:
+
+```sh
 npm run seed -- --corpus starter
 ```
 
-The outbox is idempotent and contains a manifest. No external message has been sent.
+The outbox is idempotent and contains a manifest. Seeding is local preparation; no external message has been sent.
 
-### 5. Integrated delivery
+### 7. Integrated delivery
 
 Before any send, state:
 
@@ -77,7 +104,7 @@ Keep the original `[SignalBoard]` subject. Send each manifest entry once. Before
 
 After seeding, disable any temporary send capability. The recurring workflow needs read/list only.
 
-### 6. Tool minimization
+### 8. Tool minimization
 
 For ongoing analysis, expose only:
 
@@ -86,7 +113,7 @@ For ongoing analysis, expose only:
 
 Disable unrestricted/raw API actions and unrelated writes.
 
-### 7. Smoke test
+### 9. Smoke test
 
 Process the starter corpus. Confirm:
 
@@ -96,7 +123,7 @@ Process the starter corpus. Confirm:
 - repeated runs create no duplicates;
 - the source fixture/message ID appears in task notes.
 
-### 8. Full assessment
+### 10. Full assessment
 
 Analyze the selected `.eml` corpus or seeded inbox without reading `expected/` first. Separate:
 
@@ -106,6 +133,6 @@ Analyze the selected `.eml` corpus or seeded inbox without reading `expected/` f
 
 After presenting the assessment, the facilitator may compare it with `expected/planted-signals.md`.
 
-### 9. Reset
+### 11. Reset
 
 `npm run reset -- --confirm` only moves the generated local outbox to `.trash/`. Explain that remote cleanup is intentionally manual and must be separately approved.

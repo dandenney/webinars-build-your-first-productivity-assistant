@@ -647,13 +647,14 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     <div class="duo">
       <div class="promptplate">
         <div class="plate-head"><span><b>Prompt</b> · type this here</span><span>openclaw</span></div>
-        <p class="ptext">In the signalboard-demo repo, read DEMO.md and prepare the local SignalBoard starter demo. Run the checks, tell me what you changed, and flag anything that needs my involvement.</p>
+        <p class="ptext">In the signalboard-demo repo, read DEMO.md and prepare the SignalBoard starter demo. Run the checks, then ask whether I want local-only or Zapier before seeding. Tell me what you changed, report connector readiness, and flag anything that needs my involvement.</p>
       </div>
       <ol class="steps">
         <li>OpenClaw reads the operating guide</li>
         <li>Checks Node and runs the tests</li>
         <li>Generates, verifies, and previews the starter corpus</li>
-        <li>Reports connector availability and manual boundaries</li>
+        <li>Asks local-only or Zapier before seeding</li>
+        <li>Reports connector readiness and manual boundaries</li>
       </ol>
     </div>
   </div>
@@ -667,22 +668,22 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
 <section class="slide" data-title="Connect Zapier MCP" data-sec="Setup">
   <div class="inner">
     <p class="ey"><b>§ 06</b> Setup · human boundary</p>
-    <h2>Connect once, before the webinar</h2>
+    <h2>Ask OpenClaw to connect Zapier</h2>
     <div class="duo">
+      <div class="promptplate">
+        <div class="plate-head"><span><b>Prompt 02</b> · type this here</span><span>openclaw</span></div>
+        <p class="ptext">Set up Zapier MCP for OpenClaw using mcporter. Verify the connection and list its tools, then run the zapier:onboarding skill. Help me connect the dedicated demo Gmail and Google Tasks accounts, and report when both are authenticated and ready. Do not seed or send anything yet.</p>
+      </div>
       <ul class="marklist hold">
-        <li>OpenClaw can detect and inspect the connector</li>
+        <li>Connector setup happens before corpus seeding</li>
         <li>You complete OAuth in the browser</li>
         <li>Use <strong>only</strong> the dedicated demo account</li>
         <li>Restrict tools after authentication</li>
       </ul>
-      <div>
-        <p class="statement" style="font-size:clamp(18px,2.6vw,28px)">Zapier MCP supplies connectors. <span class="co">No traditional Zap is required.</span></p>
-        <p class="statement-sub">If you find yourself building a Zap, you've left the demo.</p>
-      </div>
     </div>
   </div>
   <aside class="notes">
-    <p><strong>Be precise:</strong> the agent can guide and inspect. A human must review permissions, choose the account, and approve OAuth.</p>
+    <p><strong>Be precise:</strong> the agent can guide and inspect. A human must review permissions, choose the account, and approve OAuth. Complete validation and demo-account OAuth in the same browser profile to reduce account confusion.</p>
     <p><strong>Fallback:</strong> if auth fails live, show the pre-captured screenshot of the tool list and continue local-only.</p>
   </aside>
 </section>
@@ -1028,11 +1029,10 @@ npm run verify -- --corpus starter
 npm run preview -- --corpus starter
 
 <span class="c"># 2. Connect Zapier MCP (auth in the DEMO browser)</span>
-openclaw mcp add zapier \
-  --url "https://mcp.zapier.com/api/v1/connect" \
-  --auth oauth
-openclaw mcp login zapier
-openclaw mcp doctor zapier --probe
+npx -y mcporter --version
+npx -y mcporter config add zapier --url "https://mcp.zapier.com/api/v1/connect" --client-name "openclaw"
+npx -y mcporter list zapier --schema
+<span class="c"># Then ask OpenClaw to run the zapier:onboarding skill.</span>
 
 <span class="c"># 3. Stage the synthetic inbox (send needs explicit approval)</span>
 npm run seed -- --corpus starter --recipient <span class="hl">YOUR_DEMO_EMAIL</span></pre>

@@ -12,9 +12,9 @@ The lab demonstrates an escalating agent workflow:
 4. Identify unreliable metrics, contradictory promises, missing ownership, and positive outcomes.
 5. Create only missing follow-up work, with approval boundaries.
 
-## Quick start: local-only
+## Quick start: choose local or Zapier
 
-No Google, Zapier, or credentials are needed.
+The local path needs no Google, Zapier, or credentials. The integrated path uses Zapier MCP with a dedicated synthetic demo Google account.
 
 Clone the repository into the default OpenClaw workspace so the chat can find it:
 
@@ -38,7 +38,7 @@ npm run preview -- --corpus starter
 
 Then ask OpenClaw:
 
-> In the signalboard-demo repo, read `DEMO.md` and prepare the local SignalBoard starter demo. Run the checks, tell me what you changed, and flag anything that needs my involvement.
+> In the signalboard-demo repo, read `DEMO.md` and prepare the SignalBoard starter demo. Run the checks, then ask whether I want local-only or Zapier before seeding. Tell me what you changed, report connector readiness, and flag anything that needs my involvement.
 
 Move from `starter` (3 messages), to `workshop` (12), to `full` (24).
 
@@ -48,13 +48,14 @@ The full path uses Zapier MCP as authenticated plumbing. OpenClaw remains respon
 
 Use only a dedicated demo Google account. Zapier's Gmail connector may request broad OAuth permissions even when the exposed OpenClaw tools are later narrowed.
 
-1. Connect Zapier MCP to OpenClaw.
-2. Connect the dedicated demo Gmail and Google Tasks accounts.
-3. Restrict enabled Gmail actions to the minimum required read/list action.
-4. Restrict Google Tasks to list, create, and update.
-5. Run `npm run seed -- --corpus starter` to prepare a reviewed outbox.
-6. Ask OpenClaw to deliver that outbox to the demo inbox. This is an external action and requires confirmation.
-7. Apply the workflow in `templates/signalboard-workflow.md`.
+1. Prepare and preview the starter corpus locally.
+2. Connect Zapier MCP to OpenClaw before seeding.
+3. Connect the dedicated demo Gmail and Google Tasks accounts.
+4. Restrict enabled Gmail actions to the minimum required read/list action.
+5. Restrict Google Tasks to list, create, and update.
+6. Run `npm run seed -- --corpus starter` to prepare a reviewed outbox.
+7. Ask OpenClaw to deliver that outbox to the demo inbox. This is an external action and requires confirmation.
+8. Apply the workflow in `templates/signalboard-workflow.md`.
 
 The repository deliberately does not store OAuth tokens or send mail by itself. Provider-specific credentials do not belong in workshop fixtures.
 
