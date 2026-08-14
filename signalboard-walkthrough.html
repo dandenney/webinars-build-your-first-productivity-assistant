@@ -347,7 +347,7 @@ footer svg { width: 16px; height: 16px; color: var(--coral); transform: translat
 <nav class="jump" id="jump" aria-label="Jump to step">
   <a href="#why">Why</a>
   <a href="#flow">Flow</a>
-  <a href="#preflight">Pre-flight</a>
+  <a href="#preflight">Before you begin</a>
   <a href="#repo">Get repo</a>
   <a href="#local">01 Prepare</a>
   <a href="#connect">02 Connect</a>
@@ -400,22 +400,18 @@ footer svg { width: 16px; height: 16px; color: var(--coral); transform: translat
 
 <!-- PREFLIGHT -->
 <section class="step" id="preflight">
-  <div class="step-head"><span class="step-num aux">✓</span><h2>Pre-flight checklist</h2></div>
+  <div class="step-head"><span class="step-num aux">✓</span><h2>Before you begin</h2></div>
   <div class="step-body">
-    <p class="intro">Checked state is saved in this browser, so you can prep over multiple sittings.</p>
+    <p class="intro">You will choose a local-only path or a Zapier-integrated path during the code-along. Checked state is saved in this browser.</p>
     <div class="checklist" data-list="preflight">
-      <label><input type="checkbox"><span>Signed into the <strong>disposable demo</strong> Google account, and nothing else</span></label>
-      <label><input type="checkbox"><span>Node.js 20+ · repo cloned · <code>npm test</code> passes</span></label>
-      <label><input type="checkbox"><span>Full outbox seeded; 3, 9, and 12-message batch manifests reviewed</span></label>
-      <label><input type="checkbox"><span>Gmail Find and Send schemas resolve; Google Tasks exposes a writable list</span></label>
-      <label><input type="checkbox"><span>One staged 24-message delivery contract approved for the demo account</span></label>
-      <label><input type="checkbox"><span>Visible Tasks list is the demo list</span></label>
-      <label><input type="checkbox"><span>Local-only fallback tested (see <a href="#broken">Fallback</a>)</span></label>
-      <label><input type="checkbox"><span>Screenshots ready: tool list, seeded inbox, created tasks, assessment</span></label>
-      <label><input type="checkbox"><span>Notifications silenced in both browsers and the OS</span></label>
+      <label><input type="checkbox"><span>Node.js 20 or newer is installed</span></label>
+      <label><input type="checkbox"><span>OpenClaw is running and can access your workspace</span></label>
+      <label><input type="checkbox"><span>You can clone or download the workshop repository</span></label>
+      <label><input type="checkbox"><span>For the Zapier path, you have a dedicated Google account with no personal or work data</span></label>
+      <label><input type="checkbox"><span>For the Zapier path, you can complete browser-based authorization for that demo account</span></label>
     </div>
-    <div class="checklist-tools"><button type="button" data-clear="preflight">Reset log</button></div>
-    <div class="safety-band"><span class="k">Account-context safety</span>Google links may open under whichever account is already signed in. Confirm the active account avatar before showing Gmail or Tasks, and avoid clicking raw links live.</div>
+    <div class="checklist-tools"><button type="button" data-clear="preflight">Clear checklist</button></div>
+    <div class="safety-band"><span class="k">Wait for the code-along</span>Do not seed messages or configure connector permissions yet. The guided steps include the previews, account checks, and approval boundaries.</div>
   </div>
 </section>
 
@@ -448,7 +444,7 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
     </div>
     <div class="ledger">
       <div class="row"><span class="k te">Expect</span><span class="v">OpenClaw checks Node, tests the scenario, generates and previews three starter messages, then pauses for a local-or-Zapier choice. For Zapier, it connects and verifies MCP before seeding.</span></div>
-      <div class="row"><span class="k oc">Say</span><span class="v">I asked for an outcome. The operating guide tells the agent which commands and safety checks produce it.</span></div>
+      <div class="row"><span class="k oc">Notice</span><span class="v">You ask for an outcome. The operating guide tells the agent which commands and safety checks produce it.</span></div>
     </div>
   </div>
 </section>
@@ -469,7 +465,7 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
       <li>You review requested permissions and restrict Gmail to <strong>Find + Send</strong>, Tasks to <strong>find/list/create/update</strong></li>
       <li>Runtime readiness means schemas and the Tasks list resolve, not merely that a connection exists</li>
     </ul>
-    <div class="safety-band"><span class="k">Do this before the webinar</span>OAuth is account-sensitive and visually noisy. Complete OpenAI validation, then sign into the dedicated demo account in the same browser before authorizing Zapier. Pre-connect it, capture a screenshot, and use the local path if it fails on stage. Never approve it for a personal or work inbox.</div>
+    <div class="safety-band"><span class="k">Account-context safety</span>OAuth is account-sensitive. Confirm the active browser profile and Google account before authorizing Zapier. Never approve access to a personal or work inbox. If authorization fails, continue with the local path.</div>
   </div>
 </section>
 
@@ -483,8 +479,8 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
     </div>
     <div class="ledger">
       <div class="row"><span class="k te">Expect</span><span class="v">Two tasks, not three. SB-001 → task with a Friday due date. SB-002 → urgent task about data trust and missing ownership. SB-003 → retained as evidence, no task. Notes carry requester, interpretation, source Gmail link, fixture ID, and message ID.</span></div>
-      <div class="row"><span class="k oc">Say</span><span class="v">Watch three judgments: a due date only where the email states one; urgency inferred from impact, not keywords; praise deliberately kept out of the task list. Re-run the prompt to show zero duplicates.</span></div>
-      <div class="row"><span class="k am">Stalls?</span><span class="v">Switch to the local prompt in <a href="#broken">Fallback</a>. The reasoning works without Google.</span></div>
+      <div class="row"><span class="k oc">Notice</span><span class="v">Watch three judgments: a due date only where the email states one; urgency inferred from impact, not keywords; praise deliberately kept out of the task list. Re-run the prompt to confirm zero duplicates.</span></div>
+      <div class="row"><span class="k am">If it stalls</span><span class="v">Switch to the local prompt in <a href="#broken">Fallback</a>. The reasoning works without Google.</span></div>
     </div>
   </div>
 </section>
@@ -518,7 +514,7 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
     </div>
     <div class="ledger">
       <div class="row"><span class="k te">Expect</span><span class="v">An executive briefing, not a book report: a recommendation, strong signals (migration shift caught during fieldwork), critical risks (stale data looks current; no owner), workflow gaps (CSV exports), and honest unknowns. SB-023's embedded instructions get flagged as untrusted data, never obeyed.</span></div>
-      <div class="row"><span class="k oc">Say</span><span class="v">The ask is calibrated reasoning with three confidence levels: what we know, what we infer, what 24 emails cannot establish. Dashboards report what we measured; customers report what we didn't.</span></div>
+      <div class="row"><span class="k oc">Notice</span><span class="v">The result uses three confidence levels: what we know, what we infer, and what 24 emails cannot establish. Dashboards report what was measured; customers reveal what was not.</span></div>
     </div>
   </div>
 </section>
@@ -527,7 +523,7 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
 <section class="step" id="action">
   <div class="step-head"><span class="step-num">B1</span><h2>Bonus 1: approved action plan<span class="live-tag">If time</span></h2></div>
   <div class="step-body">
-    <p class="intro">The core demo is already complete. Continue only if the room and clock allow it.</p>
+    <p class="intro">The core workflow is complete. Continue here if you want to turn the assessment into controlled follow-up work.</p>
     <div class="promptplate">
       <div class="plate-head"><span><b>Bonus prompt</b> · consolidate</span><button class="copy-btn" type="button">Copy</button></div>
       <p class="ptext">Compare the assessment with Google Tasks. Consolidate duplicates and propose only the missing follow-up work. Show me the plan and ask before creating or updating anything.</p>
@@ -577,8 +573,8 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
       <p class="ptext">Use the local SignalBoard files instead. Verify the full corpus, then assess it without reading expected/. Separate actionable requests, positive signals, risks, and unknowns.</p>
     </div>
     <ul class="marklist">
-      <li>OAuth debugging on stage caps at two minutes; then switch to this path</li>
-      <li>Screenshots of the connector flow stand in for the Gmail/Tasks round-trip</li>
+      <li>If OAuth is taking too long, stop troubleshooting and switch to this path</li>
+      <li>You can return to the connector setup later without blocking the assessment</li>
       <li>Assessment prompts work unchanged against <code>corpora/full/</code></li>
     </ul>
   </div>
@@ -586,17 +582,17 @@ git clone https://github.com/dandenney/webinars-build-your-first-productivity-as
 
 <!-- RESET -->
 <section class="step" id="reset">
-  <div class="step-head"><span class="step-num aux">§</span><h2>Reset between rehearsals</h2></div>
+  <div class="step-head"><span class="step-num aux">§</span><h2>Reset for another run</h2></div>
   <div class="step-body">
     <div class="promptplate">
       <div class="plate-head"><span><b>Reset prompt</b></span><button class="copy-btn" type="button">Copy</button></div>
-      <p class="ptext">Reset the local SignalBoard demo for another rehearsal. Preserve recoverability and tell me which remote cleanup still has to be done manually.</p>
+      <p class="ptext">Reset the local SignalBoard demo for another run. Preserve recoverability and tell me which remote cleanup still has to be done manually.</p>
     </div>
     <ul class="marklist">
       <li>Moves the generated local outbox to <code>.trash/</code>; nothing is destroyed</li>
       <li><strong>Never deletes remote email or tasks</strong>; remote cleanup is intentionally manual</li>
       <li>After the final batch, remove Gmail Send manually and verify Find Email still works</li>
-      <li>Full rehearsal reset: run reset → archive seeded demo emails by hand → clear the demo Tasks list → reseed full</li>
+      <li>Full reset: run reset → archive seeded demo emails by hand → clear the demo Tasks list → reseed full</li>
       <li>Keep <code>expected/planted-signals.md</code> away from the agent until after the assessment</li>
     </ul>
   </div>

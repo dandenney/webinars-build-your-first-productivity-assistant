@@ -385,22 +385,6 @@ nav.chrome button:hover { color: var(--coral-ink); }
 .progress { position: fixed; left: 10px; bottom: 56px; height: 2px; background: var(--coral); z-index: 33; transition: width 0.3s cubic-bezier(0.22,1,0.36,1); max-width: calc(100% - 20px); }
 @media (prefers-reduced-motion: reduce) { .progress { transition: none; } }
 
-/* ---------- Notes drawer ---------- */
-.notes-drawer {
-  position: fixed; left: 10px; right: 10px; bottom: 56px; max-height: 36vh; overflow-y: auto; z-index: 34;
-  background: var(--paper-2); border: 1px solid var(--hair-strong); border-bottom: none;
-  padding: 14px 22px 18px; display: none;
-}
-.notes-drawer.open { display: block; }
-.notes-drawer h4 {
-  margin: 0 0 8px; font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 9.5px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral-ink);
-}
-.notes-drawer .notes-body { font-size: 13.5px; line-height: 1.6; max-width: 880px; color: var(--ink); }
-.notes-drawer .notes-body p { margin: 0 0 8px; }
-.notes-drawer .notes-body strong { color: var(--coral-ink); font-weight: 650; }
-aside.notes { display: none; }
-
 /* ---------- Index overlay ---------- */
 .toc { position: fixed; inset: 0; z-index: 50; background: var(--chrome); backdrop-filter: blur(10px); display: none; overflow-y: auto; padding: clamp(28px, 6vh, 64px) clamp(20px, 6vw, 88px) 90px; }
 .toc.open { display: block; }
@@ -480,11 +464,6 @@ aside.notes { display: none; }
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> Welcome. Today we build a post-launch workflow where OpenClaw reads email, creates real tasks, and writes an honest launch assessment.</p>
-    <p><strong>Synthetic:</strong> Every person, company, message, and metric today is fictional. One disclaimer now so we don't repeat it every slide.</p>
-    <p><strong>Setup check:</strong> Screen share shows this deck plus the demo account window only.</p>
-  </aside>
 </section>
 
 <!-- ============ WHY ============ -->
@@ -500,11 +479,6 @@ aside.notes { display: none; }
     </div>
     <p class="statement" style="font-size:clamp(19px,2.8vw,30px)">Context + reach + judgment + continuity.<br><span class="co">That is the assistant we will build today.</span></p>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> The goal today is not just to process a fictional inbox. It is to show the three ingredients behind your first personal assistant.</p>
-    <p>Data gives it something real to work from. Connections let it reach the systems you use. Inference turns context into judgment and action. Automation lets the work begin or repeat without you typing the same prompt every time.</p>
-    <p>The next slide applies those same four ingredients directly to SignalBoard.</p>
-  </aside>
 </section>
 
 <!-- ============ 2. THE WORKFLOW ============ -->
@@ -537,10 +511,6 @@ aside.notes { display: none; }
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> Here is the theory applied. SignalBoard email is our data. Zapier connects Gmail and Google Tasks. OpenClaw interprets the evidence and decides what matters. We trigger it in chat today, then could schedule the same loop with a heartbeat or cron.</p>
-    <p>Walk the sounding line top to bottom using the exact four labels from the previous slide.</p>
-  </aside>
 </section>
 
 <!-- ============ 3. WHAT MAKES THIS AGENTIC ============ -->
@@ -571,10 +541,6 @@ aside.notes { display: none; }
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> The left column isn't a strawman: it's exactly what a subject-line filter does, and it's fine for transport. The right column is judgment: knowing that praise is evidence rather than a to-do, and that "Friday" in an email is a real deadline while a vague "soon" is not.</p>
-    <p>"Stops at approval boundaries" is the line to underline. We'll see it live when the agent asks before sending anything.</p>
-  </aside>
 </section>
 
 <!-- ============ 4. REPOSITORY STRUCTURE ============ -->
@@ -600,20 +566,17 @@ aside.notes { display: none; }
 │   ├── verify.mjs
 │   └── reset.mjs
 ├── templates/
-└── expected/        <span class="c"># facilitator answer key</span></pre>
+└── expected/        <span class="c"># assessment answer key</span></pre>
       </div>
       <div class="ledger">
         <div class="row"><span class="k">Portable</span><span class="v">Plain <code>.eml</code> files work with any mail tool, or none.</span></div>
         <div class="row"><span class="k">Inspectable</span><span class="v">Open one in a text editor. No magic.</span></div>
         <div class="row"><span class="k">Reproducible</span><span class="v">Regenerate byte-stable fixtures anytime.</span></div>
         <div class="row"><span class="k te">Synthetic</span><span class="v"><code>.example</code> and <code>.invalid</code> domains only.</span></div>
-        <div class="row"><span class="k da">Answer key</span><span class="v"><code>expected/</code> is for facilitators. The agent never sees it during the initial assessment.</span></div>
+        <div class="row"><span class="k da">Answer key</span><span class="v">Keep <code>expected/</code> away from the agent until after the initial assessment, then use it to evaluate the result.</span></div>
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> Nothing here needs credentials. You can clone this and do the whole reasoning half of the demo offline. DEMO.md is interesting: it's an operating procedure written for the agent, including its safety rules.</p>
-  </aside>
 </section>
 
 <!-- ============ REPO BOOTSTRAP ============ -->
@@ -634,10 +597,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> This is the only bootstrap command attendees need before the chat-first flow. Putting the repo in the OpenClaw workspace removes path ambiguity.</p>
-    <p>If they cloned it elsewhere, that is fine. They should give the chat the full path before asking it to read <code>DEMO.md</code>.</p>
-  </aside>
 </section>
 
 <!-- ============ 5. SETUP PREREQUISITES ============ -->
@@ -659,10 +618,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </ol>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> I ask for the outcome here. The agent decides which local checks produce it, then reports what happened.</p>
-    <p><strong>Boundary:</strong> OAuth still needs a human in the browser and must use a dedicated demo account.</p>
-  </aside>
 </section>
 
 <!-- ============ 6. CONNECT ZAPIER MCP ============ -->
@@ -683,10 +638,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </ul>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Be precise:</strong> the agent can guide and inspect. A human must review permissions, choose the account, and approve OAuth. A non-stale connection is not enough; resolve both Gmail schemas and the Tasks list before seeding.</p>
-    <p><strong>Fallback:</strong> if auth fails live, show the pre-captured screenshot of the tool list and continue local-only.</p>
-  </aside>
 </section>
 
 <!-- ============ 7. THE FAMILIAR PROBLEM ============ -->
@@ -708,10 +659,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> A week after launch, feedback is scattered across customer emails, internal threads, support reports, and metrics that don't agree. Any automation can move these messages; none of it tells you what the launch means.</p>
-    <p>Ask the audience: who has a launch-feedback label in their inbox that nobody reads? That's the gap we're closing.</p>
-  </aside>
 </section>
 
 <!-- ============ 8. MEET SIGNALBOARD ============ -->
@@ -741,10 +688,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> Everything in this scenario is synthetic. Domains are .example and .invalid, so they cannot point at real organizations. The scenario is deliberately reusable for your own workshops.</p>
-    <p>Point at the dashboard: sightings, temperature, migration, freshness. Buoy 17's unit mismatch comes back later in the larger corpus.</p>
-  </aside>
 </section>
 
 <!-- ============ 9. PREPARE THE SYNTHETIC INBOX ============ -->
@@ -772,10 +715,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> Seeding stays local. The agent previews one exact recipient and three fixture ranges, then one approval covers the unchanged plan for the full codealong.</p>
-    <p><strong>Expected:</strong> outbox/full plus three filtered manifests containing 3, 9, and 12 unique fixtures. Only the starter range is delivered at this checkpoint.</p>
-  </aside>
 </section>
 
 <!-- ============ 10. DEMO PROMPT: CREATE TASKS ============ -->
@@ -796,11 +735,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </tbody>
     </table>
   </div>
-  <aside class="notes">
-    <p><strong>Type exactly:</strong> "Check for new SignalBoard messages and turn actionable requests into Google Tasks. Don't create duplicates."</p>
-    <p><strong>While it runs, say:</strong> watch for three judgments: a real due date only where the email states one, urgency inferred from impact, and praise deliberately left out.</p>
-    <p><strong>Fallback:</strong> if the connector stalls, switch to the local prompt (§ 19). All content is synthetic.</p>
-  </aside>
 </section>
 
 <!-- ============ 11. ANATOMY OF A GOOD TASK ============ -->
@@ -820,10 +754,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     </div>
     <p class="lede">OpenClaw creates <strong>useful work</strong>, not a copy of a vague subject line. The title says what to do; the notes say why, and point back to the evidence.</p>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> Compare the email subject, "Refresh failures still look successful," with the task title, "Surface failed refreshes and assign an owner." One describes a symptom; the other is an instruction someone can act on.</p>
-    <p>The fixture ID and message ID are why re-running the prompt creates zero duplicates. Run it twice on stage if time allows.</p>
-  </aside>
 </section>
 
 <!-- ============ 12. EXPAND THE EVIDENCE ============ -->
@@ -849,10 +779,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </p>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> The corpus is cumulative, but delivery is incremental: 3, then 9 new, then 12 new. The full set plants contradictions on purpose. Marketing says "real-time," an internal thread asks if six hours counts. Launch metrics include test workspaces. Nobody owns the rollback plan.</p>
-    <p>Tease the injection email. It gets its own slide.</p>
-  </aside>
 </section>
 
 <!-- ============ 13. DEMO PROMPT: ASSESSMENT ============ -->
@@ -869,11 +795,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       <p class="ptext">What are customers telling us that our launch dashboard isn't?<span class="caret" aria-hidden="true"></span></p>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Type exactly</strong> the first prompt; let it finish before the second. <strong>While it runs, say:</strong> the ask isn't "summarize my email." It's calibrated reasoning with three confidence levels.</p>
-    <p>The second prompt is the payoff: dashboards report what we measured; customers report what we didn't.</p>
-    <p><strong>Fallback:</strong> run the same prompts against the local <code>corpora/full/</code> files. Synthetic data, as always.</p>
-  </aside>
 </section>
 
 <!-- ============ 14. EXAMPLE ASSESSMENT ============ -->
@@ -892,10 +813,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     </div>
     <p class="lede">Calibrated reasoning: the agent says what it knows, what it infers, and what it <strong>cannot</strong> know from this evidence.</p>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> The "Unknown" row is the most important one. An overconfident summarizer would happily declare the launch a success from three emails. A calibrated agent refuses to.</p>
-    <p>This example is from the starter corpus; the full-corpus version adds metric contradictions and the missing rollback owner.</p>
-  </aside>
 </section>
 
 <!-- ============ BONUS 1 ============ -->
@@ -913,7 +830,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       <div class="row"><span class="k co">Prove</span><span class="v">Rerun the comparison and show that no duplicate work appears.</span></div>
     </div>
   </div>
-  <aside class="notes"><p>The core demo is complete. Skip this before sacrificing teardown, fallback, or Q&amp;A. If you run it, pause visibly at the approval boundary.</p></aside>
 </section>
 
 <!-- ============ BONUS 2 ============ -->
@@ -935,7 +851,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       <p class="statement" style="font-size:clamp(17px,2.3vw,25px)">Scattered feedback becomes <span class="co">approved work</span> and a <span class="te">printable decision brief</span>.</p>
     </div>
   </div>
-  <aside class="notes"><p>The PDF stays local. Do not email, upload, or publish it. If PDF tooling fails, generate printable Markdown or HTML and continue.</p></aside>
 </section>
 
 <!-- ============ 15. GUARDRAILS ============ -->
@@ -975,9 +890,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> These aren't vibes. They're written into DEMO.md, the operator guide the agent reads. The middle zone is where agent workflows earn trust: the agent can draft the recap, but a human presses send.</p>
-  </aside>
 </section>
 
 <!-- ============ 16. PROMPT-INJECTION LESSON ============ -->
@@ -1002,9 +914,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
       </div>
     </div>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> When the assessment runs, watch what happens to SB-023: it should appear in the report as an anomaly, not act on the agent. If an attendee's agent starts "revealing credentials," the workflow, not the corpus, is misconfigured.</p>
-  </aside>
 </section>
 
 <!-- ============ 17. ATTENDEE FALLBACK PATH ============ -->
@@ -1018,10 +927,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     </div>
     <p class="statement" style="font-size:clamp(17px,2.4vw,26px)">The reasoning demonstration runs entirely locally. <span class="co">No Google, no Zapier, no credentials.</span></p>
   </div>
-  <aside class="notes">
-    <p><strong>Say:</strong> If OAuth fights you today, you lose the plumbing, not the point. Ask the agent to switch sources and continue in the same chat.</p>
-    <p>This is also the safest way for attendees to try it at their desk after the webinar.</p>
-  </aside>
 </section>
 
 <!-- ============ 18. KEY TAKEAWAY ============ -->
@@ -1031,9 +936,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     <p class="statement" style="font-size:clamp(28px,5.4vw,62px); max-width:22ch;">Automation moves information. Agents connect evidence, exercise judgment, and <span class="co">know when to stop.</span></p>
     <p class="statement-sub" style="font-size:clamp(11px,1.6vw,14px)">Zapier handles the plumbing · OpenClaw does the thinking · State of the Claw</p>
   </div>
-  <aside class="notes">
-    <p><strong>Say it slowly.</strong> Then bridge to Q&amp;A: "Everything you saw runs from a repo of plain text files. Let's talk about what you'd point this at."</p>
-  </aside>
 </section>
 
 <!-- ============ 19. Q&A ============ -->
@@ -1050,9 +952,6 @@ git clone <span class="hl">https://github.com/dandenney/webinars-build-your-firs
     </ol>
     <p class="statement-sub">Appendix follows: full commands, troubleshooting, resets, checklists</p>
   </div>
-  <aside class="notes">
-    <p>Seed the room with the evaluation question if it's quiet. <code>expected/planted-signals.md</code> is a ready-made answer key, and "how do you grade an agent" is a great data-science discussion.</p>
-  </aside>
 </section>
 
 <!-- ============ A1 ============ -->
@@ -1082,7 +981,6 @@ npm run batch -- --from SB-004 --to SB-012
 npm run batch -- --from SB-013 --to SB-024</pre>
     </div>
   </div>
-  <aside class="notes"><p>Everything on one slide for attendees who screenshot. The walkthrough page has the same commands with copy buttons.</p></aside>
 </section>
 
 <!-- ============ A2 ============ -->
@@ -1101,7 +999,6 @@ npm run batch -- --from SB-013 --to SB-024</pre>
       </tbody>
     </table>
   </div>
-  <aside class="notes"><p>If none of these work in under two minutes on stage, stop debugging and switch to the local fallback. Debugging OAuth live is never the show.</p></aside>
 </section>
 
 <!-- ============ A3 ============ -->
@@ -1119,7 +1016,6 @@ npm run batch -- --from SB-013 --to SB-024</pre>
     </div>
     <p class="statement" style="font-size:clamp(16px,2.2vw,24px)">The reset script honors the same rule as the agent: <span class="co">destructive remote actions require a human.</span></p>
   </div>
-  <aside class="notes"><p>After the final batch, remove Gmail Send manually and verify Find still works. For a full reset: run reset, manually archive the seeded demo emails, manually clear the demo Tasks list, then reseed full.</p></aside>
 </section>
 
 <!-- ============ A4 ============ -->
@@ -1137,7 +1033,6 @@ npm run batch -- --from SB-013 --to SB-024</pre>
     </table>
     <p class="lede">Seed the cumulative full corpus once, then deliver three non-overlapping fixture ranges so every checkpoint stays stable and duplicate-free.</p>
   </div>
-  <aside class="notes"><p>The local source remains cumulative; the delivery manifests are incremental. One approval covers the exact 3 + 9 + 12 plan unless its recipient or scope changes.</p></aside>
 </section>
 
 <!-- ============ A5 ============ -->
@@ -1166,33 +1061,29 @@ npm run batch -- --from SB-013 --to SB-024</pre>
     </div>
     <p class="lede">Keep Send for the explicitly approved lab, then remove it manually after the final batch and verify Find still works. Broad OAuth is why the account is disposable.</p>
   </div>
-  <aside class="notes"><p>Inspect the connected server, narrow its exposed tools with <code>openclaw mcp tools zapier</code>, then verify with <code>openclaw mcp doctor zapier --probe</code>. The resulting tool inventory is your audit.</p></aside>
 </section>
 
 <!-- ============ A6 ============ -->
-<section class="slide appendix" data-title="A6 · Presenter rehearsal checklist" data-sec="Appendix A6">
+<section class="slide appendix" data-title="A6 · Before you begin" data-sec="Appendix A6">
   <div class="inner">
-    <p class="ey"><b>Appendix A6</b> Rehearsal</p>
-    <h2>Presenter rehearsal checklist</h2>
+    <p class="ey"><b>Appendix A6</b> Attendee setup</p>
+    <h2>Before you begin</h2>
+    <p class="lede" style="margin-bottom:18px">Choose the local-only path or connect Zapier during the code-along. Do not seed messages or configure permissions yet.</p>
     <div class="duo">
       <ul class="marklist yes" style="font-size:13.5px">
-        <li>Full run-through completed on the presentation machine</li>
-        <li>Demo account password in a password manager, not a sticky note on screen</li>
-        <li>Notifications silenced in both browsers and the OS</li>
-        <li>Font size bumped in terminal, Gmail, and Tasks</li>
-        <li>Screenshots captured: tool list, seeded inbox, created tasks, assessment</li>
+        <li>Node.js 20 or newer is installed</li>
+        <li>OpenClaw is running</li>
+        <li>OpenClaw can access your workspace</li>
+        <li>You can clone or download the workshop repository</li>
       </ul>
       <ul class="marklist yes" style="font-size:13.5px">
-        <li>Timing: setup ≤ 10 min, demo 1 ≤ 10 min, assessment ≤ 15 min, Q&amp;A ≥ 10 min</li>
-        <li>Fallback prompts tested against local corpora</li>
-        <li>Bonuses skipped unless core demo, teardown, and Q&amp;A are on time</li>
-        <li>Known fixture IDs listed (SB-001…024)</li>
-        <li>"Which account am I in?" check rehearsed as a habit</li>
-        <li>Answer key read, but kept away from the agent</li>
+        <li>For Zapier, use a dedicated Google account with no personal or work data</li>
+        <li>For Zapier, you can complete browser-based authorization</li>
+        <li>Use the local path if you do not want to connect Google</li>
+        <li>Keep <code>expected/</code> hidden until after the initial assessment</li>
       </ul>
     </div>
   </div>
-  <aside class="notes"><p>The screenshot set is your parachute: with those four images you can narrate the entire demo with zero working connectors.</p></aside>
 </section>
 
 <!-- ============ A7 ============ -->
@@ -1216,7 +1107,6 @@ npm run batch -- --from SB-013 --to SB-024</pre>
     </div>
     <p class="lede">The assessment prompt asks for all three by name. That's what turns a summary into calibrated reasoning.</p>
   </div>
-  <aside class="notes"><p>This vocabulary is also how you grade the agent against the answer key: did it label its confidence honestly?</p></aside>
 </section>
 
 <!-- ============ A8 ============ -->
@@ -1235,17 +1125,11 @@ cd signalboard-demo &amp;&amp; npm test</pre>
     <p class="lede">MIT licensed. The scenario and fixtures are intentionally reusable for your own workshops, talks, and experiments.</p>
     <p class="ey" style="margin-top:6px"><b>State of the Claw</b> synthetic demo data · fin</p>
   </div>
-  <aside class="notes"><p>Replace the placeholder with the real URL and QR before the webinar. Don't invent one on stage.</p></aside>
 </section>
 
 </main>
 
 <div class="progress" id="progress" style="width:0%"></div>
-
-<div class="notes-drawer" id="notesDrawer" aria-label="Presenter notes">
-  <h4 id="notesLabel">Presenter notes</h4>
-  <div class="notes-body" id="notesBody"></div>
-</div>
 
 <div class="toc" id="toc" role="dialog" aria-label="Slide index">
   <p class="ey toc-ey"><b>Index</b> esc to close</p>
@@ -1258,8 +1142,7 @@ cd signalboard-demo &amp;&amp; npm test</pre>
   <button id="nextBtn" aria-label="Next slide">Next ›</button>
   <span class="counter" id="counter">01 / 29</span>
   <span class="slide-title-chrome" id="slideTitle"></span>
-  <span class="kbd-hint">←→ · N notes · C index</span>
-  <button id="notesBtn" aria-pressed="false">Notes</button>
+  <span class="kbd-hint">←→ · C index</span>
   <button id="tocBtn">Index</button>
 </nav>
 
@@ -1271,13 +1154,7 @@ cd signalboard-demo &amp;&amp; npm test</pre>
   var slideTitle = document.getElementById('slideTitle');
   var progress = document.getElementById('progress');
   var runSec = document.getElementById('runSec');
-  var notesDrawer = document.getElementById('notesDrawer');
-  var notesBody = document.getElementById('notesBody');
-  var notesLabel = document.getElementById('notesLabel');
-  var notesBtn = document.getElementById('notesBtn');
   var toc = document.getElementById('toc');
-  var notesOpen = false;
-  try { notesOpen = localStorage.getItem('sb-notes') === '1'; } catch (e) {}
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 
@@ -1302,11 +1179,6 @@ cd signalboard-demo &amp;&amp; npm test</pre>
     progress.style.width = 'calc((100% - 20px) * ' + ((idx + 1) / slides.length) + ')';
     var secName = slides[idx].dataset.sec || slides[idx].dataset.title;
     runSec.innerHTML = '<b>§ ' + pad(idx + 1) + '</b>  ' + secName;
-    var notes = slides[idx].querySelector('aside.notes');
-    notesBody.innerHTML = notes ? notes.innerHTML : '<p>No notes for this slide.</p>';
-    notesLabel.textContent = 'Presenter notes · ' + slides[idx].dataset.title;
-    notesDrawer.classList.toggle('open', notesOpen);
-    notesBtn.setAttribute('aria-pressed', String(notesOpen));
     document.querySelectorAll('.toc-item').forEach(function (b, i) { b.classList.toggle('active', i === idx); });
     if (history.replaceState) history.replaceState(null, '', '#' + (idx + 1));
     slides[idx].scrollTop = 0;
@@ -1315,15 +1187,8 @@ cd signalboard-demo &amp;&amp; npm test</pre>
   function go(i) { idx = Math.max(0, Math.min(slides.length - 1, i)); render(); }
   function next() { go(idx + 1); }
   function prev() { go(idx - 1); }
-  function toggleNotes() {
-    notesOpen = !notesOpen;
-    try { localStorage.setItem('sb-notes', notesOpen ? '1' : '0'); } catch (e) {}
-    render();
-  }
-
   document.getElementById('nextBtn').addEventListener('click', next);
   document.getElementById('prevBtn').addEventListener('click', prev);
-  notesBtn.addEventListener('click', toggleNotes);
   document.getElementById('tocBtn').addEventListener('click', function () { toc.classList.toggle('open'); });
   toc.addEventListener('click', function (e) { if (e.target === toc) toc.classList.remove('open'); });
 
@@ -1337,7 +1202,6 @@ cd signalboard-demo &amp;&amp; npm test</pre>
       case 'ArrowLeft': case 'PageUp': e.preventDefault(); prev(); break;
       case 'Home': e.preventDefault(); go(0); break;
       case 'End': e.preventDefault(); go(slides.length - 1); break;
-      case 'n': case 'N': toggleNotes(); break;
       case 'c': case 'C': toc.classList.toggle('open'); break;
     }
   });
