@@ -85,6 +85,20 @@ Bonus 2, only if time allows:
 
 > Turn the assessment into a one-page State of the Claw leadership report using the repository template. Create a local PDF at reports/state-of-the-claw-week-1.pdf, preserve source fixture IDs, and do not send or publish it.
 
+## After populating the demo inbox
+
+Once all approved SignalBoard batches have been delivered and the launch assessment is complete, reconcile the assessment with the current task list. Use this prompt:
+
+> Compare the assessment with current and completed Google Tasks. Group related evidence by root cause, update existing tasks when new messages add material context, and propose only missing follow-up work. Preserve every contributing fixture ID and message ID. Show me the consolidated plan and ask before creating or updating anything.
+
+After approving the proposed changes, ask OpenClaw to apply them and rerun the comparison to confirm that no duplicate work was created.
+
+Then remove **Gmail Send Email** manually in Zapier's MCP configuration UI. Do not ask OpenClaw to remove the action programmatically: Gmail Find Email and Send Email can share the same internal action key, so programmatic removal may disable both. Verify that:
+
+- Gmail Send Email is no longer available.
+- Gmail Find Email still resolves.
+- Google Tasks find/list, create, and update actions remain ready.
+
 ## Safety and reproducibility
 
 - Every identity, domain, message, and metric is synthetic.
